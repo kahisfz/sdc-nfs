@@ -1,0 +1,52 @@
+###To install the SDC-NFS on SmartOS Zone, the following step I took for a sucessfull installation.###
+### Check the nodejs version and if it not 0.10.x then uninstalled the latest version and install the 0.10.48###
+node -v
+###if SmartOS gives you the version 7.x.x or greater than 0.10.x uninsatll it and install 0.10.48###
+pkgin -y remove nodejs
+pkgin -y intall nodejs-0.10.48
+Please check the version of nodejs and npm
+node -v
+npm -v
+###Also the following packages are requied for compilation and developement if not installed.###
+pkgin -y install gmake
+pkgin -y install bzip2
+pkgin -y install curl
+pkgin -y install dtracetools
+pkgin -y install gcc49
+pkgin -y install gcc49-libs
+pkgin -y install gcc49-libs-4.9.4nb1
+pkgin -y install git
+pkgin -y install git-base
+pkgin -y install git-contirb
+pkgin -y install git-docs
+pkgin -y install git-gitk
+pkgin -y install gtar-base
+pkgin -y install gtar
+pkgin -y install htop
+pkgin -y install openssl
+pkgin -y install openssl-1.0.2k
+pkgin -y install perl
+pkgin -y install perl-5
+pkgin -y install python
+pkgin -y install python27
+pkgin -y install smtools
+pkgin -y install zoneinit
+pkgin -y install duo-unix
+###It is appropriate to install sdc-nfs in /opt/local directory###
+cd /opt/local
+###now clone the source###
+git clone https://https://github.com/joyent/sdc-nfs.git
+###you will find a sdc-nfs directory, kindly run the insalltion inside the directory###
+cd sdc-nfs
+npm install
+###if the installation is sucessfull(retun 0 on every script) no errors###
+###you can enable it as serverice in the zone but rpc/bin should be enabled first###
+svcadm enable network/rpc/bind
+svccfg -s bind setprop config/local_only=false
+svcadm refresh bind
+###now you can import sdc-nfs.xml to enable the service but make sure that path of executeable server.js and example.json are correct###
+###in our case the path should be /opt/local/sdc-nfs for server.js and /opt/local/sdc-nfs/etc/example.json ####
+svccfg -v import svc/smf/sdc-nfs.xml
+###check sdc-nfs is running###
+svcadm -a | grep sdc-nfs
+###in case you still unable to install it in smartos zone please let me kashif.ejaz@gmail.com or kashif@ciitlahore.edu.pk###
