@@ -3,7 +3,7 @@
 node -v
 ###if SmartOS gives you the version 7.x.x or greater than 0.10.x uninsatll it and install 0.10.48###
 pkgin -y remove nodejs
-pkgin -y intall nodejs-0.10.48
+pkgin -y install nodejs-0.10.48
 Please check the version of nodejs and npm
 node -v
 npm -v
@@ -45,8 +45,8 @@ svcadm enable network/rpc/bind
 svccfg -s bind setprop config/local_only=false
 svcadm refresh bind
 ###now you can import sdc-nfs.xml to enable the service but make sure that path of executeable server.js and example.json are correct###
-###in our case the path should be /opt/local/sdc-nfs for server.js and /opt/local/sdc-nfs/etc/example.json ####
+###in our case the path should be /opt/local/sdc-nfs for server.js and /opt/local/sdc-nfs/etc/sdc-nfs.json ####
 svccfg -v import svc/smf/sdc-nfs.xml
 ###check sdc-nfs is running###
-svcadm -a | grep sdc-nfs
+svcs -a | grep sdc-nfs
 ###in case you still unable to install it in smartos zone please let me kashif.ejaz@gmail.com or kashif@ciitlahore.edu.pk###
