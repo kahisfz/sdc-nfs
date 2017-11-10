@@ -40,7 +40,7 @@
 	<exec_method
 		type="method"
 		name="start"
-		exec="/opt/local/bin/node /opt/local/bin/server.js -f /opt/local/etc/sdc-nfs.json &amp;"
+		exec="/opt/local/bin/node /opt/local/sdc-nfs/server.js -f /opt/local/sdc-nfs/etc/sdc-nfs.json &amp;"
 		timeout_seconds="30" />
 
 	<exec_method
