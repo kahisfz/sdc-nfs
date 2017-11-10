@@ -35,7 +35,7 @@ pkgin -y install duo-unix
 ###It is appropriate to install sdc-nfs in /opt/local directory###
 cd /opt/local
 ###now clone the source###
-git clone https://https://github.com/joyent/sdc-nfs.git
+git clone https://github.com/kahisfz/sdc-nfs.git
 ###you will find a sdc-nfs directory, kindly run the insalltion inside the directory###
 cd sdc-nfs
 npm install
@@ -46,6 +46,9 @@ svccfg -s bind setprop config/local_only=false
 svcadm refresh bind
 ###now you can import sdc-nfs.xml to enable the service but make sure that path of executeable server.js and example.json are correct###
 ###in our case the path should be /opt/local/sdc-nfs for server.js and /opt/local/sdc-nfs/etc/sdc-nfs.json ####
+###please do create sdc-nfs.json file, you may copy it form example.json and then edit it according to your network configurations##
+cp /opt/local/sdc-nfs/etc/example.json /opt/local/sdc-nfs/etc/sdc-nfs.jason
+###now proceed with starting it as service##
 svccfg -v import svc/smf/sdc-nfs.xml
 ###check sdc-nfs is running###
 svcs -a | grep sdc-nfs
