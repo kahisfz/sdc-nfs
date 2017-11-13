@@ -41,7 +41,7 @@ git clone https://github.com/kahisfz/sdc-nfs.git
 cd sdc-nfs
 npm install
 ###if the installation is sucessfull(retun 0 on every script) no errors###
-###you can enable it as serverice in the zone but rpc/bin should be enabled first###
+###you can enable it as serverice in the zone but rpc/bin should be enabled first.. it must be executed in host###
 svcadm enable network/rpc/bind
 svccfg -s bind setprop config/local_only=false
 svcadm refresh bind
