@@ -32,6 +32,7 @@ pkgin -y install python27
 pkgin -y install smtools
 pkgin -y install zoneinit
 pkgin -y install duo-unix
+pkgin -y install nano
 ###It is appropriate to install sdc-nfs in /opt/local directory###
 cd /opt/local
 ###now clone the source###
