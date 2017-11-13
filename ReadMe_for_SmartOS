@@ -47,7 +47,8 @@ svcadm refresh bind
 ###now you can import sdc-nfs.xml to enable the service but make sure that path of executeable server.js and example.json are correct###
 ###in our case the path should be /opt/local/sdc-nfs for server.js and /opt/local/sdc-nfs/etc/sdc-nfs.json ####
 ###please do create sdc-nfs.json file, you may copy it form example.json and then edit it according to your network configurations##
-cp /opt/local/sdc-nfs/etc/example.json /opt/local/sdc-nfs/etc/sdc-nfs.jason
+cp /opt/local/sdc-nfs/etc/example.json /opt/local/sdc-nfs/etc/sdc-nfs.json
+nano /opt/local/sdc-nfs/etc/sdc-nfs.json
 ###now proceed with starting it as service##
 svccfg -v import svc/smf/sdc-nfs.xml
 ###check sdc-nfs is running###
